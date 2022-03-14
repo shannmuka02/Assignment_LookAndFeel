@@ -1,0 +1,115 @@
+<html>
+
+<head>
+    <title>About Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        async function getUser() {
+            // const response = await fetch(' http://dummy.restapiexample.com/api/v1/employees',
+            //     {
+            //         headers: {
+            //             'Retry-After': 3600
+            //         }
+            //     },
+            // );
+            // const x = await response.json();
+            // const data =x.data;
+
+
+            const response = await fetch('  https://jsonplaceholder.typicode.com/posts',
+                {
+                    headers: {
+                        'Retry-After': 3600
+                    }
+                },
+            );
+           
+            const data = await response.json();
+
+            table = document.getElementById("table");
+
+
+
+            for (var i = 1; i < data.length; i++) {
+                var tr = document.createElement('tr');
+
+                tr.appendChild(document.createElement('td'));
+                tr.appendChild(document.createElement('td'));
+                tr.appendChild(document.createElement('td'));
+
+
+                var a = document.createElement('a');
+
+                var link = document.createTextNode(data[i - 1].id);
+                a.appendChild(link);
+                a.title = data[i - 1].id;
+                // a.href =  "http://dummy.restapiexample.com/api/v1/employees" + data[i - 1].id;
+
+                a.href =  "https://jsonplaceholder.typicode.com/posts" + data[i - 1].id;
+                
+
+                tr.cells[0].appendChild(a)
+                tr.cells[1].appendChild(document.createTextNode(data[i - 1].title));
+                tr.cells[2].appendChild(document.createTextNode(data[i - 1].body))
+
+                // tr.cells[0].appendChild(a)
+                // tr.cells[1].appendChild(document.createTextNode(data[i - 1].employee_name));
+                // tr.cells[2].appendChild(document.createTextNode(data[i - 1].employee_age))
+
+                table.appendChild(tr);
+            }
+
+
+        }
+        getUser();
+
+    </script>
+<div class="icon-bar">
+        <a href="https://www.facebook.com/TampaBayOrganics/" class="facebook"><i class="fa fa-facebook"></i></a> 
+        <a href="https://twitter.com/TampaBayOrganic" class="twitter"><i class="fa fa-twitter"></i></a> 
+        <a href="https://www.google.com/account/about/?hl=en-US" class="google"><i class="fa fa-google"></i></a> 
+        <a href="https://www.linkedin.com/company/tampa-bay-organics/about/" class="linkedin"><i class="fa fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/watch?v=9GyxKE1fo-A&t=26s" class="youtube"><i class="fa fa-youtube"></i></a> 
+      </div>
+</head>
+
+<body>
+<div class="container">
+        <div class="topimage">
+            <h1>Eat<span style="color: #3A6028;">Smart</span></h1>
+            <h2>Food vs Snacks</h2>
+        </div>
+        
+        <div class="menu">
+                <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="fruits.html">Fruits</a></li>
+                        <li><a href="snacks.html">Snacks</a></li>
+                        <li><a href="employeesList.html">Posts</a></li>
+                        <li><a href="cruds.html">Product Cart</a></li>
+                        <li><a href="about_us.html">About</a></li>
+                    </ul>
+        </div>
+        
+
+        <div class="content">
+        
+
+    <table id="table" border="1">
+
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Body</th>
+
+            <!-- <th>Id</th>
+            <th>Employee Name</th>
+            <th>Age</th> -->
+        </tr>
+        
+    </table>
+    </div>
+
+</body>
